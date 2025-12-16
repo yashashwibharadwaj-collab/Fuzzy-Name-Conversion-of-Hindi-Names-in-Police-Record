@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Police Records - Hindi Name Fuzzy Matching</title>
+
+
+<link href="style.css" rel="stylesheet"/></head>
+<body>
+<header>
+<div class="container header-content">
+<div class="logo">
+<div class="logo-icon">👮</div>
+<div class="logo-text">
+<h1>Police Records System</h1>
+<p>Hindi Name Fuzzy Matching</p>
+</div>
+</div>
+</div>
+</header>
+<main class="container">
+<section class="search-section">
+<h2>Name Search</h2>
+<p>Enter a Hindi name to search across police records with fuzzy matching</p>
+<div class="language-switch-container">
+<span class="language-switch-text" id="englishLabel">English</span>
+<label class="switch">
+<input id="languageSwitch" type="checkbox"/>
+<span class="slider"></span>
+</label>
+<span class="language-switch-text" id="hindiLabel">हिंदी</span>
+<div style="margin-left: auto;">
+<div class="language-switch-label">Current Input Mode: <span id="currentMode">English</span></div>
+</div>
+</div>
+<div class="search-container">
+<div class="search-input">
+<input autocomplete="off" id="nameInput" placeholder="Enter name (e.g., Suresh)" type="text"/>
+</div>
+<div class="search-input">
+<div class="keyboard-container" id="hindiKeyboard">
+<div class="keyboard-row">
+<button class="keyboard-key">अ</button>
+<button class="keyboard-key">आ</button>
+<button class="keyboard-key">इ</button>
+<button class="keyboard-key">ई</button>
+<button class="keyboard-key">उ</button>
+<button class="keyboard-key">ऊ</button>
+<button class="keyboard-key">ए</button>
+<button class="keyboard-key">ऐ</button>
+</div>
+<div class="keyboard-row">
+<button class="keyboard-key">ओ</button>
+<button class="keyboard-key">औ</button>
+<button class="keyboard-key">क</button>
+<button class="keyboard-key">ख</button>
+<button class="keyboard-key">ग</button>
+<button class="keyboard-key">घ</button>
+<button class="keyboard-key">च</button>
+<button class="keyboard-key">छ</button>
+</div>
+<div class="keyboard-row">
+<button class="keyboard-key">ज</button>
+<button class="keyboard-key">झ</button>
+<button class="keyboard-key">ट</button>
+<button class="keyboard-key">ठ</button>
+<button class="keyboard-key">ड</button>
+<button class="keyboard-key">ढ</button>
+<button class="keyboard-key">ण</button>
+<button class="keyboard-key">त</button>
+</div>
+<div class="keyboard-row">
+<button class="keyboard-key">थ</button>
+<button class="keyboard-key">द</button>
+<button class="keyboard-key">ध</button>
+<button class="keyboard-key">न</button>
+<button class="keyboard-key">प</button>
+<button class="keyboard-key">फ</button>
+<button class="keyboard-key">ब</button>
+<button class="keyboard-key">भ</button>
+</div>
+<div class="keyboard-row">
+<button class="keyboard-key">म</button>
+<button class="keyboard-key">य</button>
+<button class="keyboard-key">र</button>
+<button class="keyboard-key">ल</button>
+<button class="keyboard-key">व</button>
+<button class="keyboard-key">श</button>
+<button class="keyboard-key">ष</button>
+<button class="keyboard-key">स</button>
+</div>
+<div class="keyboard-row">
+<button class="keyboard-key">ह</button>
+<button class="keyboard-key">ँ</button>
+<button class="keyboard-key">ं</button>
+<button class="keyboard-key">ः</button>
+<button class="keyboard-key">ा</button>
+<button class="keyboard-key">ि</button>
+<button class="keyboard-key">ी</button>
+<button class="keyboard-key">ु</button>
+</div>
+<div class="keyboard-row">
+<button class="keyboard-key">ू</button>
+<button class="keyboard-key">े</button>
+<button class="keyboard-key">ै</button>
+<button class="keyboard-key">ो</button>
+<button class="keyboard-key">ौ</button>
+<button class="keyboard-key">्</button>
+<button class="keyboard-key"> </button>
+<button class="keyboard-key">⌫</button>
+</div>
+</div>
+<select id="searchType">
+<option value="fuzzy">Fuzzy Search</option>
+<option value="phonetic">Phonetic Search</option>
+<option value="transliteration">Transliteration Search</option>
+</select>
+</div>
+<button id="searchBtn">Search</button>
+</div>
+<div class="transliteration-container" id="transliterationContainer">
+<div class="transliteration-title">Possible Transliterations</div>
+<div class="transliteration-row">
+<div class="transliteration-label">Devanagari:</div>
+<div class="transliteration-value" id="devanagariValue">सुरेश</div>
+</div>
+<div class="transliteration-row">
+<div class="transliteration-label">English:</div>
+<div class="transliteration-value" id="englishValue">Suresh</div>
+</div>
+<div class="transliteration-row">
+<div class="transliteration-label">Variants:</div>
+<div class="transliteration-value" id="variantsValue">Suresh, Sursh, Surash, Sooresh</div>
+</div>
+</div>
+</section>
+<div class="loading" id="loadingIndicator">
+<div class="loading-spinner"></div>
+</div>
+<section class="results" id="resultsSection">
+<h2>Search Results</h2>
+<p>Showing possible matches based on fuzzy name matching</p>
+<div class="match-level">
+<div class="match-level-item active" data-level="high">High Confidence (90%+)</div>
+<div class="match-level-item" data-level="medium">Medium Confidence (70-89%)</div>
+<div class="match-level-item" data-level="low">Low Confidence (50-69%)</div>
+</div>
+<div class="result-cards" id="resultCards">
+<!-- Cards will be dynamically added here -->
+</div>
+</section>
+</main>
+<footer>
+<div class="container">
+<p>Police Records System - Hindi Name Fuzzy Matching Tool</p>
+</div>
+</footer>
+
+<script src="script.js"></script></body>
+</html>
